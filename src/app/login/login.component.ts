@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import {LoginService} from './login.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MessagePopupComponent } from '../common/message-popup/message-popup.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl(''),
   });
-  constructor(private loginService:LoginService, public dialog: MatDialog) { }
+  constructor(private loginService:LoginService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
   }
@@ -28,12 +29,14 @@ export class LoginComponent implements OnInit {
         if(res['status']){
           const dialogRef = this.dialog.open(MessagePopupComponent, {
             width: '500px',
-            data: {title: 'Failed', message: res['msg']}
+            data: {title: 'Success', message: res['msg']}
           });
+          sessionStorage.setItem('user',JSON.stringify(res['data'][0]));
+          this.router.navigate(['home']);
         }else{
           const dialogRef = this.dialog.open(MessagePopupComponent, {
             width: '500px',
-            data: {title: 'Success', message: res['msg']}
+            data: {title: 'Failed', message: res['msg']}
           });
         }
         
