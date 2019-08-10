@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
             data: {title: 'Success', message: res['msg']}
           });
           sessionStorage.setItem('user',JSON.stringify(res['data'][0]));
-          this.router.navigate(['home']);
+          this.router.navigate(['home/dashboard']);
         }else{
           const dialogRef = this.dialog.open(MessagePopupComponent, {
             width: '500px',

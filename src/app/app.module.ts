@@ -10,6 +10,10 @@ import { CustomMaterialModule } from './custome-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MessagePopupComponent } from './common/message-popup/message-popup.component';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { BookingsComponent } from './home/bookings/bookings.component';
+import { RoomsComponent } from './home/rooms/rooms.component';
+import { GuestsComponent } from './home/guests/guests.component';
 
 
 @NgModule({
@@ -17,7 +21,11 @@ import { MessagePopupComponent } from './common/message-popup/message-popup.comp
     AppComponent,
     HomeComponent,
     LoginComponent,
-    MessagePopupComponent
+    MessagePopupComponent,
+    DashboardComponent,
+    BookingsComponent,
+    RoomsComponent,
+    GuestsComponent
   ],
   imports: [
     BrowserModule,
