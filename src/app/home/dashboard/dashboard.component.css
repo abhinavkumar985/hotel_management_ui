@@ -1,0 +1,42 @@
+.mat-card {
+    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    display: inline-block;
+    position: relative;
+    padding: 24px;
+    border-radius: 2px;
+    height: 220px;
+    background-color: gray;
+    border-right: 3px solid white;
+}
+.mat-card.red{
+    background-color: rgb(214, 92, 54);
+}
+.mat-card.black{
+    background-color: rgb(58, 93, 89);
+}
+.mat-card.pink{
+    background-color: rgb(230, 38, 70);
+    border-right: 0px solid white;
+}
+.mat-card.green{
+    background-color: rgb(31, 148, 70);
+    border-right: 0px solid white;
+}
+.mat-card.purple{
+    background-color: rgb(163, 13, 156);
+}
+.mat-card.yellow{
+    background-color: rgb(149, 180, 7);
+}
+.mat-card-content{
+    text-align: center;
+    margin-top: 10%;
+    font-weight: bold;
+    font-size: 40pt;
+    color:white;
+    text-shadow: 0px 0px 4px;
+}
+.mat-card-header{
+    font-size: 15pt;
+    color: white;
+}

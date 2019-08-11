@@ -1,3 +1,11 @@
-<p>
-  dashboard works!
-</p>
+
+<div class="row no-gutters">
+<mat-card class="example-card col-4 mt-4" *ngFor="let item of data;let i = index" [ngClass]="getColor(i)">
+  <mat-card-header>
+    {{item.label}}
+  </mat-card-header>
+  <mat-card-content>
+    {{item.count}}
+  </mat-card-content>
+</mat-card>
+</div>

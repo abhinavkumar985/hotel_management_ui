@@ -14,6 +14,7 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { BookingsComponent } from './home/bookings/bookings.component';
 import { RoomsComponent } from './home/rooms/rooms.component';
 import { GuestsComponent } from './home/guests/guests.component';
+import { AdminComponent } from './home/admin/admin.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { GuestsComponent } from './home/guests/guests.component';
     DashboardComponent,
     BookingsComponent,
     RoomsComponent,
-    GuestsComponent
+    GuestsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

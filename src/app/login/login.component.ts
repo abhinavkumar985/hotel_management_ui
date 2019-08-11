@@ -27,25 +27,22 @@ export class LoginComponent implements OnInit {
       // console.log(this.form.value);
       this.loginService.authUser(this.form.value).subscribe(res=>{
         if(res['status']){
-          const dialogRef = this.dialog.open(MessagePopupComponent, {
-            width: '500px',
-            data: {title: 'Success', message: res['msg']}
-          });
+          this.showDialogMsg({title: 'Success', message: res['msg']});
           sessionStorage.setItem('user',JSON.stringify(res['data'][0]));
           this.router.navigate(['home/dashboard']);
         }else{
-          const dialogRef = this.dialog.open(MessagePopupComponent, {
-            width: '500px',
-            data: {title: 'Failed', message: res['msg']}
-          });
+          this.showDialogMsg({title: 'Failed', message: res['msg']});
         }
         
       },err =>{
-        const dialogRef = this.dialog.open(MessagePopupComponent, {
-          width: '500px',
-          data: {title: 'Failed', message: 'Unable to connect to server.'}
-        });
+        this.showDialogMsg({ title: 'Failed', message: 'Unable to connect to server.' });
       });
     }
+  }
+  showDialogMsg(data) {
+    const dialogRef = this.dialog.open(MessagePopupComponent, {
+      width: '500px',
+      data: data
+    });
   }
 }

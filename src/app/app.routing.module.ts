@@ -6,6 +6,7 @@ import { BookingsComponent } from './home/bookings/bookings.component';
 import { GuestsComponent } from './home/guests/guests.component';
 import { RoomsComponent } from './home/rooms/rooms.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { AdminComponent } from './home/admin/admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent
+      },
+      {
+        path: 'admin',
+        component: AdminComponent
       }
     ]
   },
