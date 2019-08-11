@@ -14,4 +14,7 @@ export class HomeService {
    logout(){
         return this.http.get(environment.baseurl+'/logout')
    }
+   getDashBoard(){
+    return this.http.get(environment.baseurl+'/dashboard')
+  }
 }

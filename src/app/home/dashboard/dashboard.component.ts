@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { HomeService } from "../home.service";
+import { MessagePopupComponent } from "src/app/common/message-popup/message-popup.component";
+import { MatDialog } from "@angular/material";
 
 @Component({
   selector: "app-dashboard",
@@ -6,17 +9,20 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
-  data = [
-    { count: 22, label: "Rooms Occupied" },
-    { count: 12, label: "Checkd In Guests" },
-    { count: 32, label: "Rooms Available" },
-    { count: 132, label: "All Guests" },
-    { count: 332, label: "Total Booking" },
-    { count: 18, label: "Total Staff" }
-  ];
-  constructor() {}
+  data = [];
+  constructor(private homeService:HomeService, public dialog: MatDialog) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.homeService.getDashBoard().subscribe(res => {
+      if(res['status']){
+        this.data = res['data'];
+      }else{
+        this.showDialogMsg({ title: 'Failed', message: res['msg'] })
+      }
+    },err =>{
+      this.showDialogMsg({ title: 'Failed', message: 'Unable to connect to server.' });
+    });
+  }
   getColor(i){
     if(i === 0){
       return 'red';
@@ -36,5 +42,11 @@ export class DashboardComponent implements OnInit {
     if(i === 5){
       return 'pink';
     }
+  }
+  showDialogMsg(data) {
+    const dialogRef = this.dialog.open(MessagePopupComponent, {
+      width: '500px',
+      data: data
+    });
   }
 }
