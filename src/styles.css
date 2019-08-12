@@ -2,3 +2,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
+.page-header-title{
+    color: gray;
+    font-weight: 800;
+    border: 1px solid #c9c9c9;
+    display: table;
+    padding: 5px;
+    border-radius: 3px;
+
+}
