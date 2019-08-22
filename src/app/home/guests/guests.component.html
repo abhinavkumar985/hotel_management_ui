@@ -3,6 +3,8 @@
     <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
       </mat-form-field>
+      <button mat-raised-button type="submit" color="accent" class="pull-right" [disabled]="!getDisable()">Check Out</button>
+
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource">
       
@@ -45,6 +47,13 @@
             <th mat-header-cell *matHeaderCellDef> ID Proof No. </th>
             <td mat-cell *matCellDef="let element"> {{element.id_proof_number}} </td>
           </ng-container>
+          <ng-container matColumnDef="isCheckedOut">
+              <th mat-header-cell *matHeaderCellDef> Check Out </th>
+              <td mat-cell *matCellDef="let element"> 
+                <input type="checkbox" *ngIf="!element.isCheckedOut" (click)="element.selected = !element.selected"/>
+                <span *ngIf="element.isCheckedOut" class="check-out-text"> Guest Checked Out </span>
+              </td>
+            </ng-container>
       
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
