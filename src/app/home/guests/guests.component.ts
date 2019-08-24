@@ -20,6 +20,10 @@ export class GuestsComponent implements OnInit {
   constructor(private guestService:GuestService, public dialog: MatDialog ) { }
 
   ngOnInit() {
+    this.getAllGuest();
+    
+  }
+  getAllGuest(){
     this.dataSource.paginator = this.paginator;
     this.guestService.getAllGuest().subscribe(res => {
       if(res['status']){
@@ -42,6 +46,19 @@ export class GuestsComponent implements OnInit {
     let toSend = _.where(this.dataSource.data, {selected:true});
     return toSend && toSend.length > 0;
 
+  }
+  checkout(){
+    let toSend = _.pluck(_.where(this.dataSource.data, {selected:true}),'id');
+    this.guestService.checkOutAllGuest(toSend).subscribe(res => {
+      if(res['status']){
+        this.getAllGuest();
+        this.showDialogMsg({ title: 'Success', message: res['msg'] })
+      }else{
+        this.showDialogMsg({ title: 'Failed', message: res['msg'] })
+      }
+    },err =>{
+      this.showDialogMsg({ title: 'Failed', message: 'Unable to connect to server.' });
+    });
   }
   showDialogMsg(data) {
     const dialogRef = this.dialog.open(MessagePopupComponent, {

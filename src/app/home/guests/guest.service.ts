@@ -14,4 +14,7 @@ export class GuestService {
    getAllGuest(){
         return this.http.get(environment.baseurl+'/getAllGuest')
    }
+   checkOutAllGuest(d){
+    return this.http.post(environment.baseurl+'/checkoutGuest',JSON.stringify({data:d}),httpOptions)
+}
 }
